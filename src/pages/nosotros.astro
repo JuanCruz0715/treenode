@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const values = [
+  { title: 'Código limpio', desc: 'Escribimos software mantenible y testeado. Sin atajos.' },
+  { title: 'Comunicación clara', desc: 'Sin jerga innecesaria. Vos entendés qué estamos construyendo.' },
+  { title: 'Entregas continuas', desc: 'Iteramos rápido y mostramos avances reales cada semana.' },
+  { title: 'Foco en el negocio', desc: 'No solo escribimos código: resolvemos problemas reales.' },
+];
+
+const process = [
+  { step: '01', title: 'Descubrimiento', desc: 'Entendemos tu negocio, tus objetivos y tus limitaciones.' },
+  { step: '02', title: 'Diseño', desc: 'Definimos arquitectura, stack y plan de entregas.' },
+  { step: '03', title: 'Desarrollo', desc: 'Construimos con sprints cortos y feedback continuo.' },
+  { step: '04', title: 'Lanzamiento', desc: 'Deploy, monitoreo y soporte post-lanzamiento.' },
+];
+---
+
+<BaseLayout title="Nosotros | TreeNode" description="Conocé al equipo detrás de TreeNode.">
+  <section class="pt-32 pb-16 md:pt-44 md:pb-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase mb-4">[ NOSOTROS ]</h1>
+      <h2 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+        Somos un equipo<br />
+        <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">obsesionado con el detalle.</span>
+      </h2>
+      <p class="mt-6 text-lg text-slate-400 leading-relaxed">
+        TreeNode nació de la idea de que el software a medida puede ser tan bueno como el mejor producto del mercado. Trabajamos con empresas de todos los tamaños para diseñar y construir sistemas que duren.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h3 class="text-2xl font-bold text-white mb-8 text-center">Nuestros valores</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {values.map((v) => (
+          <div class="glass-card p-8 rounded-2xl">
+            <h4 class="text-lg font-bold text-white mb-2">{v.title}</h4>
+            <p class="text-slate-400 text-sm leading-relaxed">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-slate-950/60 border-y border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h3 class="text-2xl font-bold text-white mb-12 text-center">Cómo trabajamos</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {process.map((p) => (
+          <div class="relative p-6 rounded-2xl border border-slate-800 bg-slate-900/40">
+            <div class="text-4xl font-extrabold text-emerald-400/30 font-mono mb-3">{p.step}</div>
+            <h4 class="text-lg font-bold text-white mb-2">{p.title}</h4>
+            <p class="text-slate-400 text-sm leading-relaxed">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">¿Trabajamos juntos?</h2>
+      <a href="/contacto" class="inline-block mt-8 px-8 py-4 rounded-xl text-sm font-bold bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all">
+        Contactanos →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

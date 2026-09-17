@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" fill="none">
+  <!-- Hoja superior central -->
+  <path d="M60 10 C 68 18, 72 30, 68 42 C 64 50, 56 50, 52 42 C 48 30, 52 18, 60 10 Z" fill="#10D97C"/>
+  <path d="M60 12 L 60 42" stroke="#0B0F17" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Hoja izquierda -->
+  <path d="M22 42 C 32 38, 44 42, 48 52 C 50 60, 44 66, 36 64 C 26 62, 22 50, 22 42 Z" fill="#10D97C"/>
+
+  <!-- Hoja derecha -->
+  <path d="M98 42 C 88 38, 76 42, 72 52 C 70 60, 76 66, 84 64 C 94 62, 98 50, 98 42 Z" fill="#10D97C"/>
+
+  <!-- Tronco principal -->
+  <path d="M60 42 L 60 108" stroke="#10B981" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Bifurcaciones -->
+  <path d="M60 60 L 44 46" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M60 60 L 76 46" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Codo inferior izquierdo -->
+  <path d="M60 108 L 40 108" stroke="#10B981" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Nodos tecnológicos a la derecha -->
+  <rect x="74" y="62" width="34" height="14" rx="3" stroke="#10B981" stroke-width="2" fill="none"/>
+  <circle cx="96" cy="69" r="3.5" fill="#10D97C"/>
+
+  <rect x="74" y="82" width="34" height="14" rx="3" stroke="#10B981" stroke-width="2" fill="none"/>
+  <circle cx="96" cy="89" r="3.5" fill="#10D97C"/>
+
+  <rect x="74" y="102" width="34" height="14" rx="3" stroke="#10B981" stroke-width="2" fill="none"/>
+  <circle cx="96" cy="109" r="3.5" fill="#10D97C"/>
+</svg>

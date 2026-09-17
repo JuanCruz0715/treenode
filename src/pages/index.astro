@@ -1,17 +1,113 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import TrustedBy from '../components/TrustedBy.astro';
 
+const services = [
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
+    title: 'Desarrollo Web',
+    description: 'Sitios y plataformas web modernas, rápidas y escalables.',
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg>',
+    title: 'Apps Móviles',
+    description: 'Aplicaciones iOS y Android nativas o cross-platform.',
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8m0 0l-4 4m4-4l4 4"/><circle cx="12" cy="2" r="2" fill="currentColor"/><circle cx="8" cy="14" r="2" fill="currentColor"/><circle cx="16" cy="14" r="2" fill="currentColor"/></svg>',
+    title: 'Sistemas a Medida',
+    description: 'ERPs, CRMs y plataformas internas hechas a tu medida.',
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+    title: 'Integraciones & APIs',
+    description: 'Conectamos tus herramientas y automatizamos procesos.',
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+  <!-- HERO -->
+  <section class="relative pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-6">
+        <span class="flex h-2 w-2 relative">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        </span>
+        SOFTWARE A MEDIDA · DISPONIBLES PARA NUEVOS PROYECTOS
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.1] max-w-4xl mx-auto">
+        Construimos el software<br />
+        <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent glow-text">
+          que tu negocio necesita.
+        </span>
+      </h1>
+
+      <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        En TreeNode diseñamos, desarrollamos y escalamos sistemas a medida para empresas que quieren crecer sin límites técnicos.
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/contacto" class="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all">
+          Empezar un proyecto →
+        </a>
+        <a href="/servicios" class="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold bg-slate-900/80 border border-slate-700 text-slate-200 hover:bg-slate-800 transition-all">
+          Ver servicios
+        </a>
+      </div>
+
+      <div class="pt-16 mt-16 border-t border-slate-800/80 grid grid-cols-3 gap-4 max-w-3xl mx-auto">
+        <div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono">+50</div>
+          <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Proyectos</div>
+        </div>
+        <div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">99.9%</div>
+          <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Uptime</div>
+        </div>
+        <div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono">24/7</div>
+          <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Soporte</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- NUEVA SECCIÓN: CONFÍAN EN NOSOTROS -->
+  <TrustedBy />
+  <!-- SERVICIOS DESTACADOS -->
+  <section class="py-24 bg-slate-950/60 border-y border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase mb-3">[ QUÉ HACEMOS ]</h2>
+        <h3 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Servicios pensados para escalar.</h3>
+        <p class="mt-4 text-slate-400 text-base sm:text-lg">Soluciones tecnológicas end-to-end, desde la idea hasta producción.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {services.map((s) => <ServiceCard {...s} />)}
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="/servicios" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-mono text-sm">
+          Ver todos los servicios →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+        ¿Listo para construir algo grande?
+      </h2>
+      <p class="mt-4 text-slate-400 text-lg">Contanos tu idea y te ayudamos a hacerla realidad.</p>
+      <a href="/contacto" class="inline-block mt-8 px-8 py-4 rounded-xl text-sm font-bold bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all">
+        Hablemos →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

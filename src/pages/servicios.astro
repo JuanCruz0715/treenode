@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const services = [
+  { title: 'Desarrollo Web', desc: 'Sitios corporativos, e-commerce y plataformas web con Next.js, React y Astro. Optimización de performance, SEO y accesibilidad.' },
+  { title: 'Aplicaciones Móviles', desc: 'Apps iOS y Android nativas o cross-platform (React Native, Flutter). Publicación en stores y mantenimiento continuo.' },
+  { title: 'Sistemas a Medida', desc: 'ERPs, CRMs, dashboards y plataformas internas adaptadas 100% a tus procesos de negocio.' },
+  { title: 'Integraciones & APIs', desc: 'Conectamos tus sistemas con pasarelas de pago, CRMs, ERPs y servicios externos. Automatizamos flujos.' },
+  { title: 'Cloud & DevOps', desc: 'Infraestructura en AWS, GCP o Azure. CI/CD, monitoreo y escalabilidad automática.' },
+  { title: 'Mantenimiento & Soporte', desc: 'Soporte continuo, actualizaciones de seguridad y evolución de tu producto a largo plazo.' },
+];
+---
+
+<BaseLayout title="Servicios | TreeNode" description="Servicios de desarrollo de software a medida.">
+  <section class="pt-32 pb-16 md:pt-44 md:pb-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase mb-4">[ SERVICIOS ]</h1>
+        <h2 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+          Todo lo que tu negocio<br />
+          <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">necesita para crecer.</span>
+        </h2>
+        <p class="mt-6 text-lg text-slate-400">Del concepto a producción, cubrimos cada etapa del ciclo de vida del software.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((s) => (
+          <div class="glass-card p-8 rounded-2xl">
+            <h3 class="text-xl font-bold text-white mb-3">{s.title}</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">¿No ves lo que buscás?</h2>
+      <p class="mt-4 text-slate-400">Trabajamos en proyectos personalizados. Contanos qué necesitás.</p>
+      <a href="/contacto" class="inline-block mt-8 px-8 py-4 rounded-xl text-sm font-bold bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all">
+        Contanos tu proyecto →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

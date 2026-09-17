@@ -1,0 +1,80 @@
+---
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/servicios', label: 'Servicios' },
+  { href: '/nosotros', label: 'Nosotros' },
+  { href: '/contacto', label: 'Contacto' },
+];
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-slate-800/80">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 group">
+      <!-- Isotipo SVG -->
+      <img
+        src="/logo-icon.svg"
+        alt="TreeNode"
+        class="h-11 w-auto group-hover:scale-105 transition-transform duration-300"
+      />
+
+      <!-- Texto -->
+      <div class="flex flex-col">
+        <span class="text-xl font-bold tracking-tight text-white flex items-center gap-1">
+          Tree<span class="text-emerald-400 font-extrabold">Node</span>
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        </span>
+        <span class="text-[10px] font-mono tracking-widest text-slate-400 uppercase">Software a Medida</span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'transition-colors',
+            currentPath === link.href ? 'text-emerald-400' : 'text-slate-300 hover:text-emerald-400',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- CTA -->
+    <div class="hidden md:flex items-center gap-4">
+      <a
+        href="/contacto"
+        class="px-5 py-2.5 rounded-xl text-xs font-bold tracking-wide bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 hover:shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all"
+      >
+        Hablemos →
+      </a>
+    </div>
+
+    <!-- Mobile Button -->
+    <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div id="mobileMenu" class="hidden md:hidden border-b border-slate-800 bg-slate-950/95 px-4 pt-2 pb-6 space-y-3">
+    {links.map((link) => (
+      <a href={link.href} class="block py-2 text-slate-300 hover:text-emerald-400">{link.label}</a>
+    ))}
+    <a href="/contacto" class="block w-full text-center py-3 mt-4 rounded-xl font-bold bg-emerald-500 text-slate-950">
+      Hablemos →
+    </a>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobileMenuBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+</script>
