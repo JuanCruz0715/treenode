@@ -9,10 +9,15 @@ const {
   subtitle = 'Trabajamos con startups y empresas que necesitan software a medida.',
 } = Astro.props;
 
-// Acá está tu cliente real. 
-// IMPORTANTE: Si tu archivo es "sn.svg" o "sn.jpg", cambiá la extensión acá abajo.
 const clients = [
-  { name: 'SN', logo: '/sn.png' }, 
+  { 
+    name: 'SN', 
+    logo: '/sn.png', 
+    project: 'Sistema Integral de Gestión de Viajes',
+    problem: 'Centralizamos la facturación, la gestión de pasajeros y la administración de viajes en una sola plataforma. Eliminamos las planillas manuales, reduciendo errores y agilizando la operación diaria.',
+    tech: 'Node.js · PostgreSQL · React'
+  },
+  // Acá podés agregar más clientes en el futuro siguiendo el mismo formato.
 ];
 ---
 
@@ -30,15 +35,36 @@ const clients = [
       </p>
     </div>
 
-    <!-- Cambié la grilla para que se centre si hay pocos clientes -->
-    <div class="flex flex-wrap justify-center gap-6 items-center">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {clients.map((client) => (
-        <div class="group flex items-center justify-center p-6 rounded-2xl bg-slate-900/40 border border-slate-800/60 hover:border-emerald-500/30 transition-all duration-300 min-w-[150px]">
-          <img
-            src={client.logo}
-            alt={client.name}
-            class="h-10 sm:h-12 w-auto opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
-          />
+        <div class="group flex flex-col p-6 rounded-2xl bg-slate-900/40 border border-slate-800/60 hover:border-emerald-500/40 transition-all duration-300">
+          
+          <!-- Logo del cliente -->
+          <div class="h-12 mb-4 flex items-center">
+            <img
+              src={client.logo}
+              alt={client.name}
+              class="h-8 sm:h-10 w-auto opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
+            />
+          </div>
+
+          <!-- Nombre del proyecto -->
+          <h4 class="text-lg font-bold text-white mb-2">
+            {client.project}
+          </h4>
+
+          <!-- Problema resuelto -->
+          <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-grow">
+            {client.problem}
+          </p>
+
+          <!-- Tecnologías -->
+          {client.tech && (
+            <div class="text-xs font-mono text-emerald-400/80 border-t border-slate-800/60 pt-3">
+              {client.tech}
+            </div>
+          )}
+
         </div>
       ))}
     </div>
