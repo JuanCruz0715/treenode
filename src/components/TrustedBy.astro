@@ -9,15 +9,10 @@ const {
   subtitle = 'Trabajamos con startups y empresas que necesitan software a medida.',
 } = Astro.props;
 
-// Reemplazá estos por tus clientes reales.
-// Cada uno tiene: name (para accesibilidad) y logo (ruta en /public/logos/)
+// Acá está tu cliente real. 
+// IMPORTANTE: Si tu archivo es "sn.svg" o "sn.jpg", cambiá la extensión acá abajo.
 const clients = [
-  { name: 'Cliente 1', logo: '/logos/client-1.svg' },
-  { name: 'Cliente 2', logo: '/logos/client-2.svg' },
-  { name: 'Cliente 3', logo: '/logos/client-3.svg' },
-  { name: 'Cliente 4', logo: '/logos/client-4.svg' },
-  { name: 'Cliente 5', logo: '/logos/client-5.svg' },
-  { name: 'Cliente 6', logo: '/logos/client-6.svg' },
+  { name: 'SN', logo: '/sn.png' }, 
 ];
 ---
 
@@ -35,13 +30,14 @@ const clients = [
       </p>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 items-center">
+    <!-- Cambié la grilla para que se centre si hay pocos clientes -->
+    <div class="flex flex-wrap justify-center gap-6 items-center">
       {clients.map((client) => (
-        <div class="group flex items-center justify-center p-6 rounded-2xl bg-slate-900/40 border border-slate-800/60 hover:border-emerald-500/30 transition-all duration-300">
+        <div class="group flex items-center justify-center p-6 rounded-2xl bg-slate-900/40 border border-slate-800/60 hover:border-emerald-500/30 transition-all duration-300 min-w-[150px]">
           <img
             src={client.logo}
             alt={client.name}
-            class="h-8 sm:h-10 w-auto opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
+            class="h-10 sm:h-12 w-auto opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
           />
         </div>
       ))}
