@@ -31,21 +31,27 @@ const services = [
   <!-- HERO -->
   <section class="relative pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      
-      <!-- 👇 ACÁ BORRAMOS LA ETIQUETA VERDE 👇 -->
 
       <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.1] max-w-4xl mx-auto">
-        Construimos el software<br />
-        <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent glow-text">
+        <!-- Línea 1: animada palabra por palabra con SplitText -->
+        <span id="hero-line-1" class="block">
+          Construimos el software
+        </span>
+
+        <!-- Línea 2: animada como bloque (sin SplitText) -->
+        <span
+          id="hero-line-2"
+          class="block bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent glow-text"
+        >
           que tu negocio necesita.
         </span>
       </h1>
 
-      <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+      <p id="hero-subtitle" class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
         En TreeNode diseñamos, desarrollamos y escalamos sistemas a medida para empresas que quieren crecer sin límites técnicos.
       </p>
 
-      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <div id="hero-buttons" class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
         <a href="/contacto" class="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all">
           Empezar un proyecto →
         </a>
@@ -54,28 +60,26 @@ const services = [
         </a>
       </div>
 
-      <!-- 👇 ACÁ BORRAMOS TODA LA SECCIÓN DE NÚMEROS (+50, 99.9%, 24/7) 👇 -->
-
     </div>
   </section>
-  
-  <!-- NUEVA SECCIÓN: CONFÍAN EN NOSOTROS -->
+
+  <!-- CONFÍAN EN NOSOTROS -->
   <TrustedBy />
-  
+
   <!-- SERVICIOS DESTACADOS -->
   <section class="py-24 bg-slate-950/60 border-y border-slate-800/60">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase mb-3">[ QUÉ HACEMOS ]</h2>
-        <h3 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Servicios pensados para escalar.</h3>
-        <p class="mt-4 text-slate-400 text-base sm:text-lg">Soluciones tecnológicas end-to-end, desde la idea hasta producción.</p>
+        <h2 id="services-eyebrow" class="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase mb-3">[ QUÉ HACEMOS ]</h2>
+        <h3 id="services-title" class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Servicios pensados para escalar.</h3>
+        <p id="services-subtitle" class="mt-4 text-slate-400 text-base sm:text-lg">Soluciones tecnológicas end-to-end, desde la idea hasta producción.</p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div id="services-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {services.map((s) => <ServiceCard {...s} />)}
       </div>
 
-      <div class="text-center mt-12">
+      <div id="services-cta" class="text-center mt-12">
         <a href="/servicios" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-mono text-sm">
           Ver todos los servicios →
         </a>
@@ -86,13 +90,97 @@ const services = [
   <!-- CTA FINAL -->
   <section class="py-24">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+      <h2 id="cta-title" class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
         ¿Listo para construir algo grande?
       </h2>
-      <p class="mt-4 text-slate-400 text-lg">Contanos tu idea y te ayudamos a hacerla realidad.</p>
-      <a href="/contacto" class="inline-block mt-8 px-8 py-4 rounded-xl text-sm font-bold bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all">
+      <p id="cta-subtitle" class="mt-4 text-slate-400 text-lg">Contanos tu idea y te ayudamos a hacerla realidad.</p>
+      <a id="cta-button" href="/contacto" class="inline-block mt-8 px-8 py-4 rounded-xl text-sm font-bold bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all">
         Hablemos →
       </a>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+
+  // ============================================
+  // 1. SPLIT TEXT SOLO EN LA LÍNEA 1 DEL HERO
+  // ============================================
+  const splitLine1 = new SplitText("#hero-line-1", {
+    type: "words",
+  });
+
+  const splitSubtitle = new SplitText("#hero-subtitle", {
+    type: "lines",
+    linesClass: "overflow-hidden",
+  });
+
+  // ============================================
+  // 2. TIMELINE DE ENTRADA DEL HERO
+  // ============================================
+  const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+
+  tl.from(splitLine1.words, {
+    y: 80,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.06,
+  })
+    .from("#hero-line-2", {
+      y: 40,
+      opacity: 0,
+      duration: 0.9,
+    }, "-=0.5")
+    .from(splitSubtitle.lines, {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.1,
+    }, "-=0.6")
+    .from("#hero-buttons", {
+      y: 20,
+      opacity: 0,
+      duration: 0.6,
+    }, "-=0.4");
+
+  // ============================================
+  // 3. SECCIÓN SERVICIOS
+  // ============================================
+  const servicesTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#services-title",
+      start: "top 85%",
+      toggleActions: "play none none none",
+    },
+    defaults: { ease: "power3.out" },
+  });
+
+  servicesTl
+    .from("#services-eyebrow", { y: 20, opacity: 0, duration: 0.6 })
+    .from("#services-title", { y: 40, opacity: 0, duration: 0.9 }, "-=0.4")
+    .from("#services-subtitle", { y: 30, opacity: 0, duration: 0.7 }, "-=0.5")
+    .from("#services-grid > *", { y: 60, opacity: 0, duration: 0.7, stagger: 0.12 }, "-=0.3")
+    .from("#services-cta", { y: 20, opacity: 0, duration: 0.5 }, "-=0.3");
+
+  // ============================================
+  // 4. CTA FINAL
+  // ============================================
+  const ctaTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#cta-title",
+      start: "top 85%",
+      toggleActions: "play none none none",
+    },
+    defaults: { ease: "power3.out" },
+  });
+
+  ctaTl
+    .from("#cta-title", { y: 50, opacity: 0, duration: 1 })
+    .from("#cta-subtitle", { y: 30, opacity: 0, duration: 0.7 }, "-=0.6")
+    .from("#cta-button", { y: 20, opacity: 0, scale: 0.95, duration: 0.6 }, "-=0.4");
+</script>
